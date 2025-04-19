@@ -26,3 +26,4 @@ go.work.sum
 
 # .copilot context
 .copilot.context.json
+*.log

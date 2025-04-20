@@ -8,15 +8,32 @@ import (
 	"time"
 )
 
+// LoggerConfig holds the configuration for the logger
+// It includes the logging level, file mode, and log file name
 type LoggerConfig struct {
-	Level       slog.Level
-	FileMode    bool
+
+	// Logging level (e.g., Debug, Info, Warn, Error)
+	Level slog.Level
+
+	// FileMode indicates whether to log to a file
+	// If true, LogFileName must be provided
+	FileMode bool
+
+	// LogFileName is the name of the log file
+	// This is only used if FileMode is true
+	// If FileMode is false, this field is ignored
+	// and can be empty
 	LogFileName string
 }
 
 var logger *slog.Logger
 
 // NewLogger initializes a new logger with the specified configuration
+// params:
+// - config: a pointer to LoggerConfig struct
+//   - level: the logging level (e.g., Debug, Info, Warn, Error)
+//   - fileMode: whether to log to a file
+//   - logFileName: the name of the log file (if fileMode is true)
 func NewLogger(config *LoggerConfig) {
 	// Create a new logger with default option
 	var output io.Writer = os.Stdout

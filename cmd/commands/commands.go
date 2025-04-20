@@ -25,6 +25,7 @@ func init() {
 
 func registerCmds() {
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(startCmd)
 }
 
 // Execute runs the root command
